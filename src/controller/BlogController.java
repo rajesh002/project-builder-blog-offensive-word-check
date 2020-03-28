@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Blog;
+import model.CheckBlogPost;
 import model.User;
 
 
@@ -33,7 +34,6 @@ public class BlogController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String blogDetails = request.getParameter("selectedAnswers")	;
-		System.out.println(blogDetails);
 		String[] userBlog=blogDetails.split(",");
 		String title = userBlog[0];
 		String description = userBlog[1];
@@ -48,7 +48,9 @@ public class BlogController extends HttpServlet {
 		blog.setBlogDescription(description);
 		blog.setDate(postedOn);
 
-		if(checkblog!) {
+		CheckBlogPost cbp=new CheckBlogPost();
+		boolean checkblog=cbp.checkBlog(blog);
+		if(checkblog) {
 			request.setAttribute("blog", blog);
 			request.setAttribute("user",user);
 			RequestDispatcher rd=this.getServletContext().getRequestDispatcher("/WEB-INF/views/blogView.jsp");
