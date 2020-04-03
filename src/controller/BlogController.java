@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Blog;
-import model.CheckBlogPost;
+import utility.CheckBlogPost;
 import model.User;
 
 
